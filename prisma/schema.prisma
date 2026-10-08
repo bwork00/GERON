@@ -1,0 +1,92 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Candidate {
+  id               String      @id @default(uuid())
+  fullName         String
+  phone            String?
+  email            String?
+  token            String      @unique
+  status           String      @default("IN_PROGRESS") // IN_PROGRESS, COMPLETED
+  startedAt        DateTime    @default(now())
+  completedAt      DateTime?
+  checklistState   String      @default("[]") // JSON string of boolean array [7]
+  selfCheckAnswers String      @default("{}") // JSON string of Q&A
+  createdAt        DateTime    @default(now())
+  updatedAt        DateTime    @updatedAt
+  progressLogs     CallProgress[]
+}
+
+model Admin {
+  id           String   @id @default(uuid())
+  username     String   @unique
+  passwordHash String
+  role         String   @default("ADMIN") // ADMIN, MENTOR
+  createdAt    DateTime @default(now())
+}
+
+model Program {
+  id              String   @id @default(uuid())
+  code            String   @unique // JUNIOR, MIDDLE_1, HIGH_2, EXPERT, ADULT
+  title           String
+  ageRange        String
+  subtitle        String
+  description     String
+  tools           String   // JSON string of string array
+  valueForParents String
+  sortOrder       Int      @default(0)
+  createdAt       DateTime @default(now())
+}
+
+model VideoLesson {
+  id           String   @id @default(uuid())
+  programCode  String
+  title        String
+  videoUrl     String
+  keyTakeaways String   // JSON string of string array
+  sortOrder    Int      @default(0)
+  createdAt    DateTime @default(now())
+}
+
+model SalesScriptSection {
+  id          String   @id @default(uuid())
+  stepNumber  Int      @unique
+  title       String
+  description String?
+  content     String
+  scriptTips  String?
+  sortOrder   Int      @default(0)
+  createdAt   DateTime @default(now())
+}
+
+model CallSample {
+  id              String         @id @default(uuid())
+  title           String
+  category        String         // FIRST_CONTACT, NEEDS_DISCOVERY, PROGRAM_PRESENTATION, OBJECTIONS, TRIAL_LESSON_BOOKING
+  audioFileName   String
+  durationSeconds Int            @default(0)
+  description     String?
+  sortOrder       Int            @default(0)
+  createdAt       DateTime       @default(now())
+  progressLogs    CallProgress[]
+}
+
+model CallProgress {
+  id              String     @id @default(uuid())
+  candidateId     String
+  callSampleId    String
+  listenedSeconds Int        @default(0)
+  isCompleted     Boolean    @default(false)
+  updatedAt       DateTime   @updatedAt
+
+  candidate  Candidate  @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  callSample CallSample @relation(fields: [callSampleId], references: [id], onDelete: Cascade)
+
+  @@unique([candidateId, callSampleId])
+}
