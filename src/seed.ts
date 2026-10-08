@@ -86,7 +86,7 @@ async function main() {
     {
       programCode: 'JUNIOR',
       title: 'Видео 1. JUNIOR — 6–8 лет',
-      videoUrl: 'https://www.youtube.com/embed/4DjBxajVDuM',
+      videoUrl: 'https://www.youtube.com/embed/4DjBxajVDuM', // JUNIOR 7-8 лет
       keyTakeaways: JSON.stringify([
         'Дети 6–8 лет учатся основам логики и компьютерной грамотности.',
         'Создают первые анимации и пиксельные рисунки в Piskel App.',
@@ -97,7 +97,7 @@ async function main() {
     {
       programCode: 'MIDDLE_1',
       title: 'Видео 2. MIDDLE — 8–10 лет',
-      videoUrl: 'https://www.youtube.com/embed/E_jUl_Si_ms',
+      videoUrl: 'https://www.youtube.com/embed/E_jUl_Si_ms', // MIDDLE 8-11 лет
       keyTakeaways: JSON.stringify([
         'Создание игр на Construct 3 и приложений на Thunkable.',
         'Развитие пространственного и математического мышления.',
@@ -108,7 +108,7 @@ async function main() {
     {
       programCode: 'HIGH_2',
       title: 'Видео 3. HIGH — 10–12 лет',
-      videoUrl: 'https://www.youtube.com/embed/tAd_oFPIbiA',
+      videoUrl: 'https://www.youtube.com/embed/tAd_oFPIbiA', // HIGH 11-14 лет
       keyTakeaways: JSON.stringify([
         'Изучение HTML/CSS/JS, Python и физики робототехники в Arduino.',
         'Основы веб-дизайна в Figma.',
@@ -119,7 +119,7 @@ async function main() {
     {
       programCode: 'EXPERT',
       title: 'Видео 4. SUPER — 12–14 лет',
-      videoUrl: 'https://www.youtube.com/embed/OsUiH0Ck1xQ',
+      videoUrl: 'https://www.youtube.com/embed/OsUiH0Ck1xQ', // EXPERT 14-17 лет
       keyTakeaways: JSON.stringify([
         'C#, Java, разработка 3D-игр в Unity.',
         '3D-моделирование профессионального уровня в Blender.',
@@ -130,7 +130,7 @@ async function main() {
     {
       programCode: 'ADULT',
       title: 'Видео 5. EXPERT — 14–16 лет',
-      videoUrl: 'https://www.youtube.com/embed/-SrPMsYl0Xg',
+      videoUrl: 'https://www.youtube.com/embed/-SrPMsYl0Xg', // Взрослые 18+
       keyTakeaways: JSON.stringify([
         'Интенсивная практика и разработка коммерческих проектов.',
         'Подготовка портфолио для работы во Frontend/Backend/UI-UX.',
