@@ -1,11 +1,10 @@
 {
-  "version": 2,
   "buildCommand": "npm run frontend:build",
   "outputDirectory": "frontend/dist",
   "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.ts" },
-    { "source": "/assets/(.*)", "destination": "/api/index.ts" },
-    { "source": "/api-docs(.*)", "destination": "/api/index.ts" },
+    { "source": "/api-docs(.*)", "destination": "/api" },
+    { "source": "/assets/(.*)", "destination": "/api" },
+    { "source": "/api/(.*)", "destination": "/api" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
