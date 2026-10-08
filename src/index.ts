@@ -58,11 +58,13 @@ app.use('/api/v1/admin', adminRoutes);
 app.use(errorHandler);
 
 // Start Express Server
-app.listen(PORT, () => {
-  console.log(`====================================================`);
-  console.log(`🚀 GERON Sales Training API Server running on port ${PORT}`);
-  console.log(`📚 Interactive Swagger API Docs: http://localhost:${PORT}/api-docs`);
-  console.log(`====================================================`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`====================================================`);
+    console.log(`🚀 GERON Sales Training API Server running on port ${PORT}`);
+    console.log(`📚 Interactive Swagger API Docs: http://localhost:${PORT}/api-docs`);
+    console.log(`====================================================`);
+  });
+}
 
 export default app;

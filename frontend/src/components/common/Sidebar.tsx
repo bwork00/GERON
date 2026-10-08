@@ -253,7 +253,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
             </a>
 
             <a
-              href="http://localhost:5000/api-docs"
+              href="/api-docs"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-ghost btn-sm"
