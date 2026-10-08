@@ -2,9 +2,9 @@
   "buildCommand": "npm run frontend:build",
   "outputDirectory": "frontend/dist",
   "rewrites": [
-    { "source": "/api-docs(.*)", "destination": "/api" },
-    { "source": "/assets/(.*)", "destination": "/api" },
-    { "source": "/api/(.*)", "destination": "/api" },
+    { "source": "/api-docs(.*)", "destination": "/api/index" },
+    { "source": "/assets/(.*)", "destination": "/api/index" },
+    { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
