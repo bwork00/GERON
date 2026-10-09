@@ -204,7 +204,7 @@ router.get('/scripts', async (req: Request, res: Response) => {
 
     res.json({
       success: true,
-      title: "ОТ ЗНАНИЯ ПРОДУКТА — К УВЕРЕННОМУ РАЗГОВОРУ",
+      title: "СКРИПТ ПРОДАЖ GERON",
       introFromHeadOfSales: {
         author: "Мира Садуова",
         position: "Руководитель отдела продаж группы компаний OMIS LNC",

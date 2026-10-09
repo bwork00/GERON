@@ -12,6 +12,8 @@ import {
   ArrowLeft,
   ChevronDown,
   ChevronUp,
+  Target,
+  CheckCircle2,
 } from 'lucide-react';
 
 import { defaultScripts } from '../../data/mockContent';
@@ -49,7 +51,7 @@ export const Screen5Script: React.FC = () => {
             {data.title}
           </h2>
           <p style={{ fontSize: '1rem', color: '#64748b' }}>
-            8 ключевых этапов построения доверительного диалога с родителем
+            10 утверждённых этапов диалога из официального регламента школы GERON
           </p>
         </div>
 
@@ -64,6 +66,79 @@ export const Screen5Script: React.FC = () => {
           <Download size={18} />
           <span>Скачать скрипт в PDF</span>
         </a>
+      </div>
+
+      {/* Manager Goals Section from Official Script */}
+      <div
+        className="card"
+        style={{
+          background: 'linear-gradient(135deg, #1e1b4b 0%, #312e81 100%)',
+          color: '#ffffff',
+          borderRadius: 20,
+          padding: '28px 32px',
+          boxShadow: '0 12px 28px -6px rgba(49, 46, 129, 0.35)',
+        }}
+      >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 14 }}>
+          <div style={{ background: '#4338ca', padding: 8, borderRadius: 10, display: 'flex' }}>
+            <Target size={22} color="#ffffff" />
+          </div>
+          <div>
+            <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#ffffff', margin: 0 }}>
+              Цель менеджера по продажам GERON
+            </h3>
+            <p style={{ fontSize: '0.8125rem', color: '#a5b4fc', margin: 0, marginTop: 2 }}>
+              Ключевые ориентиры при разговоре с родителем
+            </p>
+          </div>
+        </div>
+
+        <div
+          style={{
+            background: 'rgba(238, 242, 255, 0.12)',
+            border: '1px solid rgba(254, 240, 138, 0.35)',
+            borderRadius: 12,
+            padding: '12px 18px',
+            marginBottom: 20,
+            fontSize: '0.9375rem',
+            fontWeight: 600,
+            color: '#fef08a',
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
+          }}
+        >
+          <span>⚠️ Главное правило: Не пытаться сразу продать родителю длительное обучение!</span>
+        </div>
+
+        <div className="grid-3" style={{ gap: 16 }}>
+          <div style={{ background: 'rgba(255, 255, 255, 0.08)', borderRadius: 14, padding: '16px 18px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+            <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#c7d2fe', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              🎯 Первая цель
+            </div>
+            <p style={{ fontSize: '0.875rem', color: '#e0e7ff', lineHeight: 1.55 }}>
+              Заинтересовать родителя, понять потребность и записать ребёнка на пробный урок.
+            </p>
+          </div>
+
+          <div style={{ background: 'rgba(255, 255, 255, 0.08)', borderRadius: 14, padding: '16px 18px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+            <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#c7d2fe', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              📍 Вторая цель
+            </div>
+            <p style={{ fontSize: '0.875rem', color: '#e0e7ff', lineHeight: 1.55 }}>
+              Обеспечить фактический приход семьи в учебный центр (подтверждение, напоминание).
+            </p>
+          </div>
+
+          <div style={{ background: 'rgba(255, 255, 255, 0.08)', borderRadius: 14, padding: '16px 18px', border: '1px solid rgba(255, 255, 255, 0.15)' }}>
+            <div style={{ fontSize: '0.75rem', fontWeight: 800, color: '#c7d2fe', marginBottom: 6, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+              ⭐ После пробного урока
+            </div>
+            <p style={{ fontSize: '0.875rem', color: '#e0e7ff', lineHeight: 1.55 }}>
+              Показать родителю результат ребёнка и предложить регулярное обучение с помесячной оплатой.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Head of Sales Mira Saduova Greeting Card */}
@@ -111,10 +186,10 @@ export const Screen5Script: React.FC = () => {
         </div>
       </div>
 
-      {/* 8 Script Steps Accordion */}
+      {/* 10 Script Steps Accordion */}
       <div>
         <h3 style={{ fontSize: '1.25rem', fontWeight: 800, color: '#0f172a', marginBottom: 16 }}>
-          Структура разговора из 8 шагов
+          Структура разговора ({data.scriptSections.length} этапов скрипта)
         </h3>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
@@ -199,9 +274,9 @@ export const Screen5Script: React.FC = () => {
                         <MessageSquare size={15} />
                         <span>Речевой модуль менеджера:</span>
                       </div>
-                      <p style={{ fontSize: '0.9375rem', color: '#1e293b', lineHeight: 1.65, fontStyle: 'italic' }}>
-                        «{sec.content}»
-                      </p>
+                      <div style={{ fontSize: '0.9375rem', color: '#1e293b', lineHeight: 1.7, whiteSpace: 'pre-line' }}>
+                        {sec.content}
+                      </div>
                     </div>
 
                     {/* Tip */}

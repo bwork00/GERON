@@ -12,6 +12,8 @@ import {
   HelpCircle,
   ArrowRight,
   ArrowLeft,
+  Gift,
+  Flame,
 } from 'lucide-react';
 import { defaultPrograms } from '../../data/mockContent';
 
@@ -66,15 +68,171 @@ export const Screen3Programs: React.FC = () => {
         </p>
       </div>
 
-      {/* Age Group Selector Tabs */}
+      {/* Two Trial Lesson Options Mini-Cards */}
       <div
         style={{
-          display: 'flex',
-          gap: 8,
-          overflowX: 'auto',
-          paddingBottom: 4,
+          background: '#ffffff',
+          border: '1px solid #f1f5f9',
+          borderRadius: 20,
+          padding: '24px 28px',
+          boxShadow: '0 4px 16px -2px rgba(0, 0, 0, 0.04)',
         }}
       >
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 16 }}>
+          <Sparkles size={18} color="#7c3aed" />
+          <h3 style={{ fontSize: '1.0625rem', fontWeight: 800, color: '#0f172a' }}>
+            2 варианта пробных занятий в GERON
+          </h3>
+          <span style={{ fontSize: '0.8125rem', color: '#64748b', fontWeight: 500 }}>
+            (озвучиваются родителю на этапе записи)
+          </span>
+        </div>
+
+        <div className="grid-2" style={{ gap: 16 }}>
+          {/* Card 1: Free Trial */}
+          <div
+            style={{
+              background: '#f8fafc',
+              border: '1.5px solid #e2e8f0',
+              borderRadius: 16,
+              padding: '20px 22px',
+              position: 'relative',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              transition: 'all 200ms ease',
+            }}
+          >
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    color: '#047857',
+                    background: '#d1fae5',
+                    padding: '4px 10px',
+                    borderRadius: 9999,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.03em',
+                  }}
+                >
+                  <Gift size={13} />
+                  <span>Знакомство</span>
+                </span>
+                <span style={{ fontSize: '1.25rem', fontWeight: 900, color: '#059669' }}>
+                  0 ₸
+                </span>
+              </div>
+
+              <h4 style={{ fontSize: '1.0625rem', fontWeight: 800, color: '#0f172a', marginBottom: 8 }}>
+                1. Бесплатный пробный урок
+              </h4>
+
+              <p style={{ fontSize: '0.875rem', color: '#475569', lineHeight: 1.55 }}>
+                Ребёнок приходит, знакомится с преподавателем и пробует формат занятий. Подходит, если родитель пока просто хочет познакомиться со школой и понять, интересно ли ребёнку программирование.
+              </p>
+            </div>
+
+            <div
+              style={{
+                marginTop: 14,
+                paddingTop: 12,
+                borderTop: '1px solid #e2e8f0',
+                fontSize: '0.8125rem',
+                color: '#64748b',
+                fontWeight: 600,
+              }}
+            >
+              ✓ Без обязательств • Первый опыт в IT
+            </div>
+          </div>
+
+          {/* Card 2: Paid Trial with Bonus */}
+          <div
+            style={{
+              background: 'linear-gradient(135deg, #faf5ff 0%, #f5f3ff 100%)',
+              border: '1.5px solid #c084fc',
+              borderRadius: 16,
+              padding: '20px 22px',
+              position: 'relative',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              boxShadow: '0 8px 20px -4px rgba(124, 58, 237, 0.12)',
+              transition: 'all 200ms ease',
+            }}
+          >
+            <div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: 6,
+                    fontSize: '0.75rem',
+                    fontWeight: 700,
+                    color: '#7c3aed',
+                    background: '#ede9fe',
+                    padding: '4px 10px',
+                    borderRadius: 9999,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.03em',
+                  }}
+                >
+                  <Flame size={13} color="#e11d48" />
+                  <span>Выгода при продолжении</span>
+                </span>
+                <span style={{ fontSize: '1.25rem', fontWeight: 900, color: '#7c3aed' }}>
+                  2 000 ₸
+                </span>
+              </div>
+
+              <h4 style={{ fontSize: '1.0625rem', fontWeight: 800, color: '#0f172a', marginBottom: 8 }}>
+                2. Пробный урок с бонусом
+              </h4>
+
+              <p style={{ fontSize: '0.875rem', color: '#475569', lineHeight: 1.55 }}>
+                Пробное занятие с закреплением специальной скидки на дальнейшее регулярное обучение. Если после урока семья решает продолжить, занятия начинаются на более выгодных условиях.
+              </p>
+            </div>
+
+            <div
+              style={{
+                marginTop: 14,
+                paddingTop: 12,
+                borderTop: '1px solid #e9d5ff',
+                fontSize: '0.8125rem',
+                color: '#6d28d9',
+                fontWeight: 700,
+              }}
+            >
+              ★ Фиксация персональной скидки на курс
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Age Group Selector Tabs */}
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 12 }}>
+          <GraduationCap size={18} color="#7c3aed" />
+          <h3 style={{ fontSize: '1.0625rem', fontWeight: 800, color: '#0f172a' }}>
+            Возрастные группы и программы школы
+          </h3>
+        </div>
+
+        <div
+          style={{
+            display: 'flex',
+            gap: 8,
+            overflowX: 'auto',
+            paddingBottom: 4,
+          }}
+        >
         {data.programs.map((prog) => {
           const isSelected = prog.code === selectedCode;
           return (
@@ -103,6 +261,7 @@ export const Screen3Programs: React.FC = () => {
             </button>
           );
         })}
+        </div>
       </div>
 
       {/* Selected Program Showcase Card */}
