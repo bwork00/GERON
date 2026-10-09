@@ -30,6 +30,25 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   const [playbackRate, setPlaybackRate] = useState<number>(1);
   const [isMuted, setIsMuted] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [audioSrc, setAudioSrc] = useState<string>(streamUrl);
+
+  useEffect(() => {
+    setAudioSrc(streamUrl);
+  }, [streamUrl]);
+
+  const handleAudioError = () => {
+    if (audioSrc.startsWith('/api/')) {
+      const fallbackMap: Record<string, string> = {
+        'call-1': '/audio/call_1_first_contact.mp3',
+        'call-2': '/audio/call_2_needs_discovery.mp3',
+        'call-3': '/audio/call_3_presentation.mp3',
+        'call-4': '/audio/call_4_objections.mp3',
+        'call-5': '/audio/call_5_trial_booking.mp3',
+      };
+      const fallback = fallbackMap[id] || '/audio/call_1_first_contact.mp3';
+      setAudioSrc(fallback);
+    }
+  };
 
   // If another audio begins playing, pause this one
   useEffect(() => {
@@ -153,8 +172,9 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
     >
       <audio
         ref={audioRef}
-        src={streamUrl}
+        src={audioSrc}
         preload="metadata"
+        onError={handleAudioError}
         onTimeUpdate={handleTimeUpdate}
         onLoadedMetadata={handleLoadedMetadata}
         onWaiting={() => setIsLoading(true)}

@@ -14,11 +14,12 @@ import {
   PartyPopper,
 } from 'lucide-react';
 
+import { defaultPractice } from '../../data/mockContent';
+
 export const Screen7Practice: React.FC = () => {
   const { prevStep, checklist, toggleChecklistItem, completedChecklistCount, completeStage, isStageCompleted } = useTraining();
 
-  const [data, setData] = useState<PracticeData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<PracticeData>(defaultPractice);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
 
@@ -26,11 +27,9 @@ export const Screen7Practice: React.FC = () => {
     const load = async () => {
       try {
         const res = await contentApi.getPractice();
-        setData(res);
+        if (res) setData(res);
       } catch (err) {
         console.error('Error loading practice screen:', err);
-      } finally {
-        setLoading(false);
       }
     };
     load();
@@ -52,16 +51,6 @@ export const Screen7Practice: React.FC = () => {
       });
     }
   };
-
-  if (loading) {
-    return (
-      <div style={{ padding: 60, textAlign: 'center', color: '#94a3b8' }}>
-        Загрузка практического этапа...
-      </div>
-    );
-  }
-
-  if (!data) return null;
 
   const isAllChecked = completedChecklistCount === 7;
 

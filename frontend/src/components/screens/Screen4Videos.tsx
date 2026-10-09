@@ -13,35 +13,24 @@ import {
   GraduationCap,
 } from 'lucide-react';
 
+import { defaultVideos } from '../../data/mockContent';
+
 export const Screen4Videos: React.FC = () => {
   const { nextStep, prevStep } = useTraining();
-  const [data, setData] = useState<VideosData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<VideosData>(defaultVideos);
   const [activeModalVideo, setActiveModalVideo] = useState<VideoLessonItem | null>(null);
 
   useEffect(() => {
     const load = async () => {
       try {
         const res = await contentApi.getVideos();
-        setData(res);
+        if (res) setData(res);
       } catch (err) {
         console.error('Error loading video lessons:', err);
-      } finally {
-        setLoading(false);
       }
     };
     load();
   }, []);
-
-  if (loading) {
-    return (
-      <div style={{ padding: 60, textAlign: 'center', color: '#94a3b8' }}>
-        Загрузка видеообучения...
-      </div>
-    );
-  }
-
-  if (!data) return null;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>

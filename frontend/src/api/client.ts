@@ -67,6 +67,11 @@ export async function request<T>(endpoint: string, options: RequestOptions = {})
       );
     }
 
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      throw new ApiError('Сервер вернул HTML вместо JSON (API недоступен)', response.status);
+    }
+
     return await response.json();
   } catch (err: any) {
     if (err instanceof ApiError) throw err;

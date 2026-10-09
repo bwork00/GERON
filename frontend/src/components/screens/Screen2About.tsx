@@ -23,34 +23,23 @@ const ICON_MAP: Record<string, any> = {
   rocket: Rocket,
 };
 
+import { defaultAbout } from '../../data/mockContent';
+
 export const Screen2About: React.FC = () => {
   const { nextStep, prevStep } = useTraining();
-  const [data, setData] = useState<AboutData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<AboutData>(defaultAbout);
 
   useEffect(() => {
     const load = async () => {
       try {
         const res = await contentApi.getAbout();
-        setData(res);
+        if (res) setData(res);
       } catch (err) {
         console.error('Error loading about screen:', err);
-      } finally {
-        setLoading(false);
       }
     };
     load();
   }, []);
-
-  if (loading) {
-    return (
-      <div style={{ padding: 60, textAlign: 'center', color: '#94a3b8' }}>
-        Загрузка информации о школе...
-      </div>
-    );
-  }
-
-  if (!data) return null;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>

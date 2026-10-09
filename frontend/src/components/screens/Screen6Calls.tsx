@@ -12,34 +12,23 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 
+import { defaultCalls } from '../../data/mockContent';
+
 export const Screen6Calls: React.FC = () => {
   const { nextStep, prevStep } = useTraining();
-  const [data, setData] = useState<CallsData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<CallsData>(defaultCalls);
 
   useEffect(() => {
     const load = async () => {
       try {
         const res = await contentApi.getCalls();
-        setData(res);
+        if (res) setData(res);
       } catch (err) {
         console.error('Error loading call samples:', err);
-      } finally {
-        setLoading(false);
       }
     };
     load();
   }, []);
-
-  if (loading) {
-    return (
-      <div style={{ padding: 60, textAlign: 'center', color: '#94a3b8' }}>
-        Загрузка записей звонков...
-      </div>
-    );
-  }
-
-  if (!data) return null;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>

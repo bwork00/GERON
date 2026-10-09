@@ -4,34 +4,25 @@ import { WelcomeData } from '../../types';
 import { useTraining } from '../../context/TrainingContext';
 import { Sparkles, ArrowRight, CheckCircle2, Award, Target, Compass, BookOpen } from 'lucide-react';
 
+import { defaultWelcome } from '../../data/mockContent';
+
 export const Screen1Welcome: React.FC = () => {
   const { nextStep } = useTraining();
-  const [data, setData] = useState<WelcomeData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<WelcomeData>(defaultWelcome);
 
   useEffect(() => {
     const load = async () => {
       try {
         const res = await contentApi.getWelcome();
-        setData(res);
+        if (res) setData(res);
       } catch (err) {
         console.error('Error loading welcome screen:', err);
-      } finally {
-        setLoading(false);
       }
     };
     load();
   }, []);
 
-  if (loading) {
-    return (
-      <div style={{ padding: 60, textAlign: 'center', color: '#94a3b8' }}>
-        Загрузка приветственного экрана...
-      </div>
-    );
-  }
-
-  if (!data) return null;
+  const currentData = data || defaultWelcome;
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>

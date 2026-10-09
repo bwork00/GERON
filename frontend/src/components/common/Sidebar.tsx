@@ -242,7 +242,8 @@ export const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           {/* Action Links */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
             <a
-              href="/api/v1/media/script-pdf"
+              href="/script.pdf"
+              download="GERON_Sales_Script.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="btn btn-secondary btn-sm"

@@ -13,6 +13,7 @@ import {
   ArrowRight,
   ArrowLeft,
 } from 'lucide-react';
+import { defaultPrograms } from '../../data/mockContent';
 
 export const Screen3Programs: React.FC = () => {
   const {
@@ -24,36 +25,25 @@ export const Screen3Programs: React.FC = () => {
     isSavingSelfCheck,
   } = useTraining();
 
-  const [data, setData] = useState<ProgramsData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState<ProgramsData>(defaultPrograms);
   const [selectedCode, setSelectedCode] = useState<string>('JUNIOR');
 
   useEffect(() => {
     const load = async () => {
       try {
         const res = await contentApi.getPrograms();
-        setData(res);
-        if (res.programs?.length > 0) {
-          setSelectedCode(res.programs[0].code);
+        if (res) {
+          setData(res);
+          if (res.programs?.length > 0) {
+            setSelectedCode(res.programs[0].code);
+          }
         }
       } catch (err) {
         console.error('Error loading programs:', err);
-      } finally {
-        setLoading(false);
       }
     };
     load();
   }, []);
-
-  if (loading) {
-    return (
-      <div style={{ padding: 60, textAlign: 'center', color: '#94a3b8' }}>
-        Загрузка программ обучения...
-      </div>
-    );
-  }
-
-  if (!data) return null;
 
   const currentProgram = data.programs.find((p) => p.code === selectedCode) || data.programs[0];
 
